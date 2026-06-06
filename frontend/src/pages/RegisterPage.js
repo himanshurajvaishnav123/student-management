@@ -40,21 +40,30 @@ export default function RegisterPage() {
     link:{ color:'var(--accent)', fontWeight:'600' },
     err:{ background:'rgba(239,68,68,0.1)', border:'1px solid rgba(239,68,68,0.3)', borderRadius:'8px', padding:'10px 14px', color:'#fca5a5', fontSize:'13px', marginBottom:'16px' },
     req:{ color:'var(--red)' },
+    madeBy:{ textAlign:'center', marginTop:'16px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' },
+    socialRow:{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' },
+    socialLink:{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' },
   };
 
   const inputFocus = e => { e.target.style.borderColor='var(--accent-2)'; e.target.style.boxShadow='0 0 0 3px rgba(99,102,241,0.2)'; };
-  const inputBlur = e => { e.target.style.borderColor='var(--border)'; e.target.style.boxShadow='none'; };
+  const inputBlur  = e => { e.target.style.borderColor='var(--border)';   e.target.style.boxShadow='none'; };
 
   return (
     <div style={s.page}>
       <div style={s.bg} />
       <div style={s.card}>
+
+        {/* Header */}
         <div style={s.header}>
           <div style={s.icon}>📝</div>
           <div style={s.title}>Create Account</div>
           <div style={s.sub}>Join EduTrack as a Student</div>
         </div>
+
+        {/* Error */}
         {error && <div style={s.err}>⚠️ {error}</div>}
+
+        {/* Form */}
         <form onSubmit={handleSubmit}>
           <div style={s.grid2}>
             <div style={s.group}>
@@ -95,26 +104,45 @@ export default function RegisterPage() {
               {['Male','Female','Other'].map(g => <option key={g} value={g}>{g}</option>)}
             </select>
           </div>
-          <button style={{...s.btn, opacity:loading?0.7:1}} type="submit" disabled={loading}
-            onMouseEnter={e=>{if(!loading)e.target.style.transform='translateY(-1px)'}}
-            onMouseLeave={e=>e.target.style.transform='none'}>
+          <button
+            style={{...s.btn, opacity:loading?0.7:1}}
+            type="submit"
+            disabled={loading}
+            onMouseEnter={e=>{ if(!loading) e.target.style.transform='translateY(-1px)'; }}
+            onMouseLeave={e=>{ e.target.style.transform='none'; }}
+          >
             {loading ? '⏳ Creating account...' : '🚀 Create Student Account'}
           </button>
         </form>
-        <div style={s.footer}>Already have an account? <Link to="/login" style={s.link}>Sign in</Link></div>
-        <div style={{ textAlign:'center', marginTop:'16px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' }}>
-  Made with ❤️ by <span style={{ color:'var(--accent-2)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
-  <div style={{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' }}>
-    <a href="https://www.instagram.com/TERA_INSTA_USERNAME" target="_blank" rel="noopener noreferrer"
-      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
-      📸 Instagram
-    </a>
-    <a href="https://www.linkedin.com/in/TERA_LINKEDIN_USERNAME" target="_blank" rel="noopener noreferrer"
-      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
-      💼 LinkedIn
-    </a>
-  </div>
-</div>
+
+        {/* Sign in link */}
+        <div style={s.footer}>
+          Already have an account? <Link to="/login" style={s.link}>Sign in</Link>
+        </div>
+
+        {/* Made by — card ke andar */}
+        <div style={s.madeBy}>
+          Made with ❤️ by <span style={{ color:'var(--accent-2)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
+          <div style={s.socialRow}>
+            <a
+              href="https://www.instagram.com/himanshu_raj_vaishnav?igsh=eHpzemhocm81OHF0"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={s.socialLink}
+            >
+              📸 Instagram
+            </a>
+            <a
+              href="https://www.linkedin.com/in/himanshu-raj-vaishnav-a09962363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={s.socialLink}
+            >
+              💼 LinkedIn
+            </a>
+          </div>
+        </div>
+
       </div>
     </div>
   );

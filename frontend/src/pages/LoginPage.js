@@ -47,6 +47,9 @@ export default function LoginPage() {
     demoTitle:{ fontSize:'11px', fontWeight:'700', color:'var(--text-3)', textTransform:'uppercase', letterSpacing:'0.08em', marginBottom:'8px' },
     demoRow:{ display:'flex', justifyContent:'space-between', fontSize:'12px', color:'var(--text-2)', marginBottom:'3px' },
     demoBtn:{ flex:1, padding:'6px', background:'var(--border)', border:'none', borderRadius:'6px', color:'var(--text-2)', fontSize:'11px', fontWeight:'600', cursor:'pointer', fontFamily:'var(--font-body)' },
+    madeBy:{ textAlign:'center', marginTop:'20px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' },
+    socialRow:{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' },
+    socialLink:{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' },
   };
 
   return (
@@ -54,11 +57,15 @@ export default function LoginPage() {
       <div style={s.bg} />
       <div style={s.grid} />
       <div style={s.card}>
+
+        {/* Logo & Title */}
         <div style={{textAlign:'center'}}>
           <div style={s.logoIcon}>🎓</div>
           <div style={s.title}>EduTrack SMS</div>
           <div style={s.sub}>Student Management System</div>
         </div>
+
+        {/* Role Tabs */}
         <div style={s.tabRow}>
           {['student','admin'].map(r => (
             <button key={r} style={role===r ? s.tabActive : s.tabInactive} onClick={() => setRole(r)}>
@@ -66,40 +73,78 @@ export default function LoginPage() {
             </button>
           ))}
         </div>
+
+        {/* Error */}
         {error && <div style={s.err}>⚠️ {error}</div>}
+
+        {/* Form */}
         <form onSubmit={handleSubmit}>
           <div style={s.group}>
             <label style={s.label}>Email Address</label>
-            <input style={s.input} type="email" value={email} onChange={e=>setEmail(e.target.value)} placeholder="Enter your email" onFocus={e=>{e.target.style.borderColor='var(--accent)';e.target.style.boxShadow='0 0 0 3px var(--accent-glow)'}} onBlur={e=>{e.target.style.borderColor='var(--border)';e.target.style.boxShadow='none'}} />
+            <input
+              style={s.input}
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              onFocus={e=>{ e.target.style.borderColor='var(--accent)'; e.target.style.boxShadow='0 0 0 3px var(--accent-glow)'; }}
+              onBlur={e=>{ e.target.style.borderColor='var(--border)'; e.target.style.boxShadow='none'; }}
+            />
           </div>
           <div style={s.group}>
             <label style={s.label}>Password</label>
-            <input style={s.input} type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="Enter your password" onFocus={e=>{e.target.style.borderColor='var(--accent)';e.target.style.boxShadow='0 0 0 3px var(--accent-glow)'}} onBlur={e=>{e.target.style.borderColor='var(--border)';e.target.style.boxShadow='none'}} />
+            <input
+              style={s.input}
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="Enter your password"
+              onFocus={e=>{ e.target.style.borderColor='var(--accent)'; e.target.style.boxShadow='0 0 0 3px var(--accent-glow)'; }}
+              onBlur={e=>{ e.target.style.borderColor='var(--border)'; e.target.style.boxShadow='none'; }}
+            />
           </div>
-          <button style={{...s.btn, opacity:loading?0.7:1}} type="submit" disabled={loading}
-            onMouseEnter={e=>{if(!loading){e.target.style.transform='translateY(-1px)';e.target.style.boxShadow='0 8px 25px var(--accent-glow)';}}}
-            onMouseLeave={e=>{e.target.style.transform='none';e.target.style.boxShadow='none';}}>
+          <button
+            style={{...s.btn, opacity:loading?0.7:1}}
+            type="submit"
+            disabled={loading}
+            onMouseEnter={e=>{ if(!loading){ e.target.style.transform='translateY(-1px)'; e.target.style.boxShadow='0 8px 25px var(--accent-glow)'; }}}
+            onMouseLeave={e=>{ e.target.style.transform='none'; e.target.style.boxShadow='none'; }}
+          >
             {loading ? '⏳ Signing in...' : `Sign In as ${role === 'admin' ? 'Admin' : 'Student'}`}
           </button>
         </form>
+
+        {/* Register link */}
         {role === 'student' && (
-          <div style={s.footer}>Don&apos;t have an account? <Link to="/register" style={s.link}>Register here</Link></div>
+          <div style={s.footer}>
+            Don&apos;t have an account? <Link to="/register" style={s.link}>Register here</Link>
+          </div>
         )}
-       
+
+        {/* Made by — card ke andar */}
+        <div style={s.madeBy}>
+          Made with ❤️ by <span style={{ color:'var(--accent)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
+          <div style={s.socialRow}>
+            <a
+              href="https://www.instagram.com/himanshu_raj_vaishnav?igsh=eHpzemhocm81OHF0"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={s.socialLink}
+            >
+              📸 Instagram
+            </a>
+            <a
+              href="https://www.linkedin.com/in/himanshu-raj-vaishnav-a09962363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={s.socialLink}
+            >
+              💼 LinkedIn
+            </a>
+          </div>
+        </div>
+
       </div>
-      <div style={{ textAlign:'center', marginTop:'20px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' }}>
-  Made with ❤️ by <span style={{ color:'var(--accent)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
-  <div style={{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' }}>
-    <a href="https://www.instagram.com/himanshu_raj_vaishnav?igsh=eHpzemhocm81OHF0" target="_blank" rel="noopener noreferrer"
-      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
-      📸 Instagram
-    </a>
-    <a href="https://www.linkedin.com/in/himanshu-raj-vaishnav-a09962363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"
-      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
-      💼 LinkedIn
-    </a>
-  </div>
-</div>
     </div>
   );
 }
