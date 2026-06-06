@@ -87,6 +87,19 @@ export default function LoginPage() {
         )}
        
       </div>
+      <div style={{ textAlign:'center', marginTop:'20px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' }}>
+  Made with ❤️ by <span style={{ color:'var(--accent)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
+  <div style={{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' }}>
+    <a href="https://www.instagram.com/himanshu_raj_vaishnav?igsh=eHpzemhocm81OHF0" target="_blank" rel="noopener noreferrer"
+      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
+      📸 Instagram
+    </a>
+    <a href="https://www.linkedin.com/in/himanshu-raj-vaishnav-a09962363?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" rel="noopener noreferrer"
+      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
+      💼 LinkedIn
+    </a>
+  </div>
+</div>
     </div>
   );
 }

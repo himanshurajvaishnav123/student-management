@@ -102,6 +102,19 @@ export default function RegisterPage() {
           </button>
         </form>
         <div style={s.footer}>Already have an account? <Link to="/login" style={s.link}>Sign in</Link></div>
+        <div style={{ textAlign:'center', marginTop:'16px', paddingTop:'16px', borderTop:'1px solid var(--border)', color:'var(--text-3)', fontSize:'12px' }}>
+  Made with ❤️ by <span style={{ color:'var(--accent-2)', fontWeight:'700' }}>Himanshu Raj Vaishnav</span>
+  <div style={{ display:'flex', justifyContent:'center', gap:'12px', marginTop:'8px' }}>
+    <a href="https://www.instagram.com/TERA_INSTA_USERNAME" target="_blank" rel="noopener noreferrer"
+      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
+      📸 Instagram
+    </a>
+    <a href="https://www.linkedin.com/in/TERA_LINKEDIN_USERNAME" target="_blank" rel="noopener noreferrer"
+      style={{ color:'var(--text-3)', fontSize:'11px', textDecoration:'none', display:'flex', alignItems:'center', gap:'4px' }}>
+      💼 LinkedIn
+    </a>
+  </div>
+</div>
       </div>
     </div>
   );
